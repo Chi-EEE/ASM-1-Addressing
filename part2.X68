@@ -9,7 +9,7 @@ START:                  ; first instruction of program
 
 * Put program code here
     MOVE.B  #9,D1   *Moves the value 9 into D1
-    LEA     text,A1 *Moves the variable address of text into A1
+    LEA     text,A1 *Moves the variable address location of text into A1
     MOVE    #14,D0  *Moves the value 14 into D0, this is used for the instuction TRAP #15
     TRAP    #15     *TRAP #15 preforms the action inside of D0 which is 14:
                     *"Display the NULL terminated string at (A1) without CR, LF."

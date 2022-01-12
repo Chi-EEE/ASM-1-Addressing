@@ -1,0 +1,46 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 12/01/2022 16:06:10
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : part3
+00000000                             3  * Written by : Huu Chi Huynh
+00000000                             4  * Date       : 12/01/2022
+00000000                             5  * Description: Part 3 of Practical 7
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000  43F9 0000101C             11      LEA     text,A1 *Copies the variable address location of 'text' and puts it into A1
+00001006  303C 0004                 12      MOVE    #4,D0   *Moves the number 4 into D0 (Used for TRAP #15)
+0000100A  4E4F                      13      TRAP    #15     *TRAP #15 preforms the action 4 in D0 which is:
+0000100C                            14                      *"Read a number from the keyboard into D1.L."
+0000100C                            15                      *Get an input from the user and put the value inputted into D1
+0000100C                            16                      
+0000100C  303C 000E                 17      MOVE    #14,D0  *Moves the number 14 into D0 (Used for TRAP #15)
+00001010  4E4F                      18      TRAP    #15     *Performs the action 14 in D0 which is:
+00001012                            19                      *"Display the NULL terminated string at (A1) without CR, LF."
+00001012                            20                      *Dereference addresss at A1 and output its string
+00001012                            21                      
+00001012  303C 0003                 22      MOVE    #3,D0   *Moves the number 3 into D0 (Used for TRAP #15)
+00001016  4E4F                      23      TRAP    #15     *Performs the action 3 in D0 which is:
+00001018                            24                      *"Display signed number in D1.L in decimal in smallest field."
+00001018                            25                      *or Display the number inside of D1
+00001018                            26  
+00001018  FFFF FFFF                 27      SIMHALT             ; halt simulator
+0000101C                            28  
+0000101C                            29  * Put variables and constants here
+0000101C= 44 61 74 61 20 52 ...     30  text dc.b   'Data Register: ',0     *String variable for output
+0000102C                            31  
+0000102C                            32      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
+TEXT                101C
